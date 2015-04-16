@@ -9,6 +9,7 @@
     <script type="text/javascript" src="jquery/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="webix/webix.js" ></script>
     <script type="text/javascript" src="js/operate.js" ></script>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253060212'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/q_stat.php%3Fid%3D1253060212' type='text/javascript'%3E%3C/script%3E"));</script>
     <title>班车路线</title>
 </head>
 <body>

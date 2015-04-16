@@ -29,7 +29,7 @@ webix.ready(function () {
                                 }
                             }]
                         }, {
-                            view: "multiselect", id: 'multiselect', label: "选择线路", options: {
+                            view: "multiselect", id: 'multiselect', label: "线路", options: {
                                 buttonText: "显示",
                                 data: [
                                     {id: 1, value: "线路1"},
@@ -40,7 +40,7 @@ webix.ready(function () {
                                     {id: 6, value: "线路6"},
                                     {id: 7, value: "线路7"}
                                 ]
-                            }
+                            },value: "1,2,3,4,5,6,7"
                         }, {
                             view: "form", borderless: true, elements: [
                                 //{view: "text", type: 'email' ,label: "Email"},
@@ -168,41 +168,41 @@ function drawMap() {
     map.addOverlay(marker);
     addClickHandler("公司", marker);
 
-    //$.ajax({
-    //    url: "line/all.do",
-    //    success: function (data) {
-    //        var lastPoint;
-    //        var lastLine;
-    //        var colorIndex = 0;
-    //        $.each(data, function (n, value) {
-    //            var point = new BMap.Point(value.lon, value.lat);
-    //            var marker = new BMap.Marker(point);
-    //            map.addOverlay(marker);
-    //            var content = "线路: " + value.line_number + "<br />" + "站点: " + value.station_name + "<br />" + "到站时间: " + value.arrival_time
-    //            addClickHandler(content, marker);
-    //
-    //            //var labelName = value.station_name;
-    //            //var label = new BMap.Label(labelName, {
-    //            //    offset: new BMap.Size(0, -30),
-    //            //    position: point
-    //            //});
-    //            //map.addOverlay(label);
-    //            if (lastPoint != null) {
-    //                if (lastLine == value.line_number) {
-    //                    var polyline = new BMap.Polyline([
-    //                            lastPoint,
-    //                            point
-    //                        ],
-    //                        {strokeColor: color[value.line_number -1], strokeWeight: 6, strokeOpacity: 0.5}
-    //                    );
-    //                    map.addOverlay(polyline);
-    //                }
-    //            }
-    //            lastPoint = point;
-    //            lastLine = value.line_number;
-    //        })
-    //    }
-    //});
+    $.ajax({
+        url: "line/all.do",
+        success: function (data) {
+            var lastPoint;
+            var lastLine;
+            var colorIndex = 0;
+            $.each(data, function (n, value) {
+                var point = new BMap.Point(value.lon, value.lat);
+                var marker = new BMap.Marker(point);
+                map.addOverlay(marker);
+                var content = "线路: " + value.line_number + "<br />" + "站点: " + value.station_name + "<br />" + "到站时间: " + value.arrival_time
+                addClickHandler(content, marker);
+
+                //var labelName = value.station_name;
+                //var label = new BMap.Label(labelName, {
+                //    offset: new BMap.Size(0, -30),
+                //    position: point
+                //});
+                //map.addOverlay(label);
+                if (lastPoint != null) {
+                    if (lastLine == value.line_number) {
+                        var polyline = new BMap.Polyline([
+                                lastPoint,
+                                point
+                            ],
+                            {strokeColor: color[value.line_number -1], strokeWeight: 6, strokeOpacity: 0.5}
+                        );
+                        map.addOverlay(polyline);
+                    }
+                }
+                lastPoint = point;
+                lastLine = value.line_number;
+            })
+        }
+    });
 }
 
 /**
