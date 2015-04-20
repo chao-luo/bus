@@ -40,6 +40,7 @@
     <commons-lang3.version>3.1</commons-lang3.version>
     <commons-io.verison>2.4</commons-io.verison>
     <httpclient.version>2.4</httpclient.version>
+    <logback.version>1.0.13</logback.version>
   </properties>
 
 
@@ -118,10 +119,17 @@
       <artifactId>jackson-core-asl</artifactId>
       <version>1.8.4</version>
     </dependency>
+
     <dependency>
       <groupId>org.codehaus.jackson</groupId>
       <artifactId>jackson-mapper-asl</artifactId>
       <version>1.8.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.version}</version>
     </dependency>
 
   </dependencies>

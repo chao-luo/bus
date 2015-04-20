@@ -2,6 +2,8 @@ package info.bus.www.controller;
 
 import info.bus.www.dao.FeedBackDao;
 import info.bus.www.dao.LineDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,8 @@ import java.util.Map;
 @Controller
 public class BusController {
 
+    private Logger log = LoggerFactory.getLogger(BusController.class);
+
     @Autowired
     private LineDao lineDao;
 
@@ -29,7 +33,7 @@ public class BusController {
     @RequestMapping("/line/{lineNumber}")
     @ResponseBody
     public List<Map<String, Object>> queryLinePath(@PathVariable Integer lineNumber) {
-        System.out.println("line number is " + lineNumber);
+        log.info("line number is {}", lineNumber);
         return lineDao.selectLinePath(lineNumber);
     }
 
